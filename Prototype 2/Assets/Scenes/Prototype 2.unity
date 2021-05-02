@@ -417,29 +417,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &609316889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 3bd8a450fcb589542a7843ea7bda2ee6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1091139039}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &609316892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609316889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaca1014ac0a7e8438dc8c9eb0274c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalInput: 0
-  speed: 10
-  horizontalMoveLimit: 10
-  projectilePrefab: {fileID: 4602929408256847873, guid: 3c54d062cadfd164886b20d7b80d08bd,
-    type: 3}
 --- !u!1 &992285705
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,11 +863,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8477415742287352466, guid: 2bce564d7f16aab4491f5d390e71fab7,
-        type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 8477415742408670931, guid: 2bce564d7f16aab4491f5d390e71fab7,
         type: 3}
       propertyPath: m_Name
