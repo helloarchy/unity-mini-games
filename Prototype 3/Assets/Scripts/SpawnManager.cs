@@ -5,17 +5,18 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject obstaclePrefab;
+    public float startDelay = 2;
+    public float repeatRate = 2;
 
-    private Vector3 _spawnPosition = new Vector3(25, 0, 0);
-    // Start is called before the first frame update
+    private readonly Vector3 _spawnPosition = new Vector3(25, 0, 0);
+
     void Start()
     {
-        Instantiate(obstaclePrefab, _spawnPosition, obstaclePrefab.transform.rotation);
+        InvokeRepeating(nameof(SpawnObstacle), startDelay, repeatRate);
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnObstacle()
     {
-        
+        Instantiate(obstaclePrefab, _spawnPosition, obstaclePrefab.transform.rotation);
     }
 }
