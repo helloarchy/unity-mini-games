@@ -8,20 +8,19 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float horizontalMoveLimit = 10.0f;
     public GameObject projectilePrefab;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         RestrictToBoundary(transform.position);
 
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * (Time.deltaTime * speed * horizontalInput));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Launch projectile from player
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 
     /**
