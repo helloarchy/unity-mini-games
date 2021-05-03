@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float jumpForce;
+    public float gravityModifier;
+    
     private Rigidbody _playerRigidbody;
     // Start is called before the first frame update
     void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
-        _playerRigidbody.AddForce(Vector3.up * 1000);
+        Physics.gravity *= gravityModifier;
     }
 
     // Update is called once per frame
@@ -17,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _playerRigidbody.AddForce(Vector3.up * 1000);
+            _playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
