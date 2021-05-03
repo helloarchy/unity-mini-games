@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce;
     public float gravityModifier;
     public bool isGrounded;
+    public bool isGameOver = false;
 
     private Rigidbody _playerRigidbody;
-    private bool _isGameOver = false;
 
     void Start()
     {
@@ -36,7 +33,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Game over!");
-            _isGameOver = true;
+            isGameOver = true;
         }
     }
 }
