@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
 
     private Rigidbody _playerRigidbody;
+    private bool _isGameOver = false;
 
     void Start()
     {
@@ -28,6 +29,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        isGrounded = true;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("Game over!");
+            _isGameOver = true;
+        }
     }
 }
