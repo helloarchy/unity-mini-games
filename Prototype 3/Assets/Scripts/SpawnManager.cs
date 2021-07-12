@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
     public float startDelay = 2;
     public float repeatRate = 2;
 
-    private readonly Vector3 _spawnPosition = new Vector3(25, 0, 0);
+    private readonly Vector3 _spawnPosition = new Vector3(30, 0, 0);
     private PlayerController _playerController;
 
     void Start()
