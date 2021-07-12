@@ -6,15 +6,16 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier;
     public bool isGrounded;
     public bool isGameOver = false;
-    public Animator playerAnimator;
-
+    public ParticleSystem ParticleSystem;
+    
+    private Animator _playerAnimator;
     private Rigidbody _playerRigidbody;
 
     void Start()
     {
+        _playerAnimator = GetComponent<Animator>();
         _playerRigidbody = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent<Animator>();
-        
+
         Physics.gravity *= gravityModifier;
     }
 
@@ -22,9 +23,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isGameOver)
         {
+            _playerAnimator.SetTrigger("Jump_trig");
+            
             _playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
-            playerAnimator.SetTrigger("Jump_trig");
         }
     }
 
@@ -38,9 +40,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Game over!");
             isGameOver = true;
+
+            _playerAnimator.SetBool("Death_b", true);
+            _playerAnimator.SetInteger("DeathType_int", 1);
             
-            playerAnimator.SetBool("Death_b", true);
-            playerAnimator.SetInteger("DeathType_int", 1);
+            ParticleSystem.Play();
         }
     }
 }
