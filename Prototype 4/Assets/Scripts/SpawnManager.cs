@@ -10,8 +10,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var randomPosition = GetRandomPosition();
-        Instantiate(enemyPrefab, randomPosition, enemyPrefab.transform.rotation);
+        Instantiate(enemyPrefab, GetRandomPosition(), enemyPrefab.transform.rotation);
     }
 
     // Update is called once per frame
