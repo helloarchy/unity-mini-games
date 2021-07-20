@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Target : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Target : MonoBehaviour
     private float _maxSpeed = 16;
     private float _maxTorque = 10;
     private float _xRange = 4;
-    private float _ySpawnPos = -6; 
+    private float _ySpawnPos = -2; 
     
     // Start is called before the first frame update
     void Start()
@@ -22,10 +24,20 @@ public class Target : MonoBehaviour
         transform.position = RandomSpawnPos();
     }
 
-    // Update is called once per frame
-    void Update()
+    /**
+     * Automatically knows if mouse on gameObject.
+     */
+    private void OnMouseDown()
     {
-        
+        Destroy(gameObject);
+    }
+
+    /**
+     * Automatically knows if it enters another objects onTrigger collider
+     */
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 
     Vector3 RandomForce()
