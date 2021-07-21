@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class Target : MonoBehaviour
 {
     private Rigidbody _targetRb;
+    private GameManager _gameManager;
+    
     private float _minSpeed = 12;
     private float _maxSpeed = 16;
     private float _maxTorque = 10;
@@ -17,6 +19,7 @@ public class Target : MonoBehaviour
     void Start()
     {
         _targetRb = GetComponent<Rigidbody>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         
         _targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         _targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -30,6 +33,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        _gameManager.UpdateScore(5);
     }
 
     /**
