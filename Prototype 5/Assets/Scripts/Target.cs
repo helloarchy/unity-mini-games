@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class Target : MonoBehaviour
 {
     public int pointValue;
+    public ParticleSystem explostionParticle;
     
     private Rigidbody _targetRb;
     private GameManager _gameManager;
@@ -36,6 +37,7 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         _gameManager.UpdateScore(pointValue);
+        Instantiate(explostionParticle, transform.position, explostionParticle.transform.rotation);
     }
 
     /**
