@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
     private int _score;
     private float _spawnRate = 1.0f;
     
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore(0);
         StartCoroutine(SpawnTargets());
+        
+        gameOverText.gameObject.SetActive(true);
     }
 
     private IEnumerator SpawnTargets()
