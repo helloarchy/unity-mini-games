@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float _forwardInput;
     private Rigidbody _playerRb;
     [SerializeField] private GameObject centreOfMass;
+    [SerializeField] private float speed;
+    public TextMeshProUGUI speedometerText;
 
 
     private void Start()
@@ -32,5 +35,10 @@ public class PlayerController : MonoBehaviour
         
         // Steer the car using input
         transform.Rotate(Vector3.up * (Time.deltaTime * _turnSpeed * _horizontalInput));
+        
+        // Get speed
+        speed = _playerRb.velocity.magnitude * 2.237f;
+        speedometerText.SetText($"Speed: {Mathf.RoundToInt(speed)} mph");
+
     }
 }
