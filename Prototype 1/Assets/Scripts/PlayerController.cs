@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _playerRb;
     [SerializeField] private GameObject centreOfMass;
     [SerializeField] private float speed;
+    [SerializeField] private float rpm;
     public TextMeshProUGUI speedometerText;
+    public TextMeshProUGUI rpmText;
 
 
     private void Start()
@@ -40,5 +42,8 @@ public class PlayerController : MonoBehaviour
         speed = _playerRb.velocity.magnitude * 2.237f;
         speedometerText.SetText($"Speed: {Mathf.RoundToInt(speed)} mph");
 
+        // Get rpm
+        rpm = (speed % 30) * 40;
+        rpmText.SetText($"RPM: {Mathf.RoundToInt(rpm)}");
     }
 }
