@@ -2918,7 +2918,14 @@ MonoBehaviour:
   horsePower: 1234567
   centreOfMass: {fileID: 1236005528}
   speed: 0
+  rpm: 0
   speedometerText: {fileID: 1003364630}
+  rpmText: {fileID: 1349514070}
+  allWheels:
+  - {fileID: 1825693005}
+  - {fileID: 1658651717}
+  - {fileID: 1323456889}
+  - {fileID: 20172281}
 --- !u!4 &1237101210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 436868, guid: 70bf34f6c25c948458f254e87188b00b,
@@ -3332,7 +3339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 158, y: -133.2}
+  m_AnchoredPosition: {x: 158, y: -110.7}
   m_SizeDelta: {x: 271.74, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1349514070

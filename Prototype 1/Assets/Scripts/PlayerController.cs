@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI speedometerText;
     public TextMeshProUGUI rpmText;
 
+    [SerializeField] private List<WheelCollider> allWheels;
+    [SerializeField] private int wheelsOnGround;
 
     private void Start()
     {
@@ -27,23 +29,37 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Allow overwrite from user key press
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _forwardInput = Input.GetAxis("Vertical");
-        
-        // Move car forward
-        // transform.Translate(Vector3.forward * (Time.deltaTime * horsePower * _forwardInput));
-        _playerRb.AddRelativeForce(Vector3.forward * (Time.deltaTime * horsePower * _forwardInput));
-        
-        // Steer the car using input
-        transform.Rotate(Vector3.up * (Time.deltaTime * _turnSpeed * _horizontalInput));
-        
-        // Get speed
-        speed = _playerRb.velocity.magnitude * 2.237f;
-        speedometerText.SetText($"Speed: {Mathf.RoundToInt(speed)} mph");
+        if (isOnGround())
+        {
+            // Allow overwrite from user key press
+            _horizontalInput = Input.GetAxis("Horizontal");
+            _forwardInput = Input.GetAxis("Vertical");
 
-        // Get rpm
-        rpm = (speed % 30) * 40;
-        rpmText.SetText($"RPM: {Mathf.RoundToInt(rpm)}");
+            // Move car forward
+            // transform.Translate(Vector3.forward * (Time.deltaTime * horsePower * _forwardInput));
+            _playerRb.AddRelativeForce(Vector3.forward * (Time.deltaTime * horsePower * _forwardInput));
+
+            // Steer the car using input
+            transform.Rotate(Vector3.up * (Time.deltaTime * _turnSpeed * _horizontalInput));
+
+            // Get speed
+            speed = _playerRb.velocity.magnitude * 2.237f;
+            speedometerText.SetText($"Speed: {Mathf.RoundToInt(speed)} mph");
+
+            // Get rpm
+            rpm = (speed % 30) * 40;
+            rpmText.SetText($"RPM: {Mathf.RoundToInt(rpm)}");
+        }
+    }
+
+    private bool isOnGround()
+    {
+        wheelsOnGround = 0;
+        foreach (var wheel in allWheels)
+        {
+            if (wheel.isGrounded) wheelsOnGround++;
+        }
+
+        return (wheelsOnGround == allWheels.Count);
     }
 }
